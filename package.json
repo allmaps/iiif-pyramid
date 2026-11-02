@@ -1,0 +1,45 @@
+{
+  "name": "@allmaps/pyramid",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "vite dev --host 127.0.0.1 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "test": "node --experimental-strip-types --test test/*.test.ts",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@allmaps/annotation": "1.0.0-beta.38",
+    "@allmaps/iiif-parser": "1.0.0-beta.49",
+    "@allmaps/maplibre": "1.0.0-beta.44",
+    "@allmaps/project": "1.0.0-beta.10",
+    "@allmaps/render": "1.0.0-beta.84",
+    "@iiif/helpers": "4.0.0",
+    "canvas-confetti": "1.9.3",
+    "maplibre-gl": "6.16.0",
+    "phosphor-svelte": "^3.1.0"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/kit": "^2.63.0",
+    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^24.0.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-svelte": "^4.1.0",
+    "svelte": "^5.56.1",
+    "svelte-check": "^4.6.0",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.2",
+    "vite": "8.0.16"
+  },
+  "packageManager": "pnpm@10.22.0",
+  "engines": {
+    "node": ">=24"
+  }
+}
