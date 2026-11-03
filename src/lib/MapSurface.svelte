@@ -152,6 +152,7 @@
   let map: MapLibreMap | undefined
   let layer: PlanarMapLayer | undefined
   let scene = $state.raw<Scene>()
+  let sceneSource: ImageSource | undefined
   let ready = $state(false)
   let drawings = $state<Drawing[]>([])
   let hoverPoint: Point | undefined
@@ -560,7 +561,7 @@
   }
 
   function refresh() {
-    if (!map || !layer || !scene || disposed) return
+    if (!map || !layer || !scene || sceneSource !== source || disposed) return
     const canvas = map.getCanvas()
     if (!canvas.clientWidth || !canvas.clientHeight) return
     size = { width: canvas.clientWidth, height: canvas.clientHeight }
@@ -1353,6 +1354,7 @@
       // Bottom first, smallest/top layer last.
       for (const item of [...scene.layers].reverse())
         layer!.addGeoreferencedMap(item.map, { opacity: opacity(item) })
+      sceneSource = current
       sceneVersion++
       if (initialCamera && !figurePlacement) {
         focusedFactor = initialFocusedLevel

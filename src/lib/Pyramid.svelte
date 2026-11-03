@@ -218,6 +218,10 @@
       }
       drivingView = 'image'
       pyramidReady = false
+      // The map can redraw before Game starts the new round. Its guess and
+      // answer are in the previous canvas's pixel coordinates.
+      gameGuess = undefined
+      gameAnswer = undefined
       source = next
       gameFactor = activeFactor
       showPositionFigure = validShared?.figure ?? isLargePyramid(next.levels)
