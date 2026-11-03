@@ -1,12 +1,29 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { imageSource, tileAt } from '../src/lib/iiif.ts'
-import { chooseTile, scoreGuess } from '../src/lib/game.ts'
-import { info } from './source-fixtures.ts'
+import { chooseTile, nextGameCanvas, scoreGuess } from '../src/lib/game.ts'
+import { parseManifest } from '../src/lib/iiif-source.ts'
+import { info, manifest3 } from './source-fixtures.ts'
 
 const source = imageSource(info)
 const level = source.levels.find((level) => level.scaleFactor === 1)!
 const target = tileAt(source, level, 2, 1)
+test('manifest rounds visit other canvases before repeating, including across cycles', () => {
+  const [a, b] = parseManifest(manifest3()).canvases
+  const c = { ...a, id: 'third' }
+  const visited = new Set([a.id])
+  const draw = (current: string) => {
+    const next = nextGameCanvas([a, b, c], current, visited, () => 0.99)!
+    visited.add(next.id)
+    return next.id
+  }
+  assert.equal(draw(a.id), c.id)
+  assert.equal(draw(c.id), b.id)
+  assert.equal(draw(b.id), c.id)
+  assert.equal(draw(c.id), b.id)
+  assert.equal(draw(b.id), a.id)
+  assert.equal(nextGameCanvas([a], a.id, visited), undefined)
+})
 test('accuracy dominates time; distance, wrong resolution and delay reduce the score', () => {
   assert.equal(scoreGuess(target, target, 0).total, 1000)
   assert.equal(scoreGuess(target, target, 120).total, 800)

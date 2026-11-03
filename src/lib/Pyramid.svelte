@@ -149,11 +149,15 @@
     value = input,
     shared?: SharedView,
     options: SourceOptions = {},
-    canvas?: CanvasChoice
+    canvas?: CanvasChoice,
+    roundSignal?: AbortSignal
   ) {
     controller?.abort()
     const request = new AbortController()
     controller = request
+    const signal = roundSignal
+      ? AbortSignal.any([request.signal, roundSignal])
+      : request.signal
     loading = true
     hovered = undefined
     error = ''
@@ -168,12 +172,12 @@
       const [, loaded] = await Promise.all([
         proxy,
         canvas && manifest
-          ? loadCanvas(manifest, canvas, request.signal).then(
+          ? loadCanvas(manifest, canvas, signal).then(
               (source) => ({ source, manifest }) as LoadedSource
             )
-          : loadIIIFSource(value, request.signal, options)
+          : loadIIIFSource(value, signal, options)
       ])
-      if (request.signal.aborted) return
+      if (signal.aborted) return
       const next = loaded.source
       manifest = loaded.manifest
       initialRegion = loaded.region
@@ -226,8 +230,13 @@
       }
       replaceState(url, {})
       inputDialog.close()
+      return true
     } catch (cause) {
-      if (request.signal.aborted) return
+      if (signal.aborted) return
+      if (roundSignal && canvas) {
+        notice = `Could not load “${canvas.label}”. This round uses the current canvas.`
+        return false
+      }
       error =
         cause instanceof Error
           ? cause.message
@@ -236,7 +245,7 @@
         error =
           'The image service could not be reached. Check the URL and whether it allows cross-origin browser requests.'
     } finally {
-      if (!request.signal.aborted) loading = false
+      if (controller === request) loading = false
     }
   }
 
@@ -997,7 +1006,8 @@
       ontogglegrid={() => (gameGrid = !gameGrid)}
       exitHref={sourceUrl(baseHref, source, `${base}/`).href}
       onopen={() => inputDialog.showModal()}
-      oncanvas={(canvas) => void open(manifest!.url, undefined, {}, canvas)}
+      oncanvas={(canvas, signal) =>
+        open(manifest!.url, undefined, {}, canvas, signal)}
     />{/if}
 
   {#if error}

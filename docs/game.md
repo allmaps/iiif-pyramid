@@ -64,8 +64,11 @@ zero over 120 seconds and are weighted by accuracy. Distance is measured in
 source tile widths/heights and wrong resolutions incur an additional penalty.
 Timers wait for the hint, initial pyramid tiles, and framing animation; games
 run entirely locally.
-Changing image or canvas starts a
-new game through the source picker. A final score dialog shows each round and
+With a manifest, the first round uses the selected canvas. Advancing or
+skipping draws a different canvas at random, visiting each once before
+repeating. Scores carry over and the clock waits for the new canvas and tile.
+Choosing a canvas manually or opening another resource starts a new game.
+A final score dialog shows each round and
 offers Play again; View score reopens it after dismissal.
 
 Tile Hunt supports controllers exposed with the browser's

@@ -25,7 +25,13 @@
   import { controllerLabels, watchGamepad } from './gamepad'
   import type { Controller, GamepadAction } from './gamepad'
   import type { Point } from './geometry'
-  import { chooseTile, scoreGuess, roundCount, difficulties } from './game'
+  import {
+    chooseTile,
+    nextGameCanvas,
+    scoreGuess,
+    roundCount,
+    difficulties
+  } from './game'
   import type { RoundResult, Difficulty } from './game'
 
   let {
@@ -53,7 +59,10 @@
     loading: boolean
     exitHref: string
     onopen: () => void
-    oncanvas: (canvas: CanvasChoice) => void
+    oncanvas: (
+      canvas: CanvasChoice,
+      signal?: AbortSignal
+    ) => Promise<boolean | undefined>
     grid: boolean
     ontogglegrid: () => void
     canPlace?: boolean
@@ -86,7 +95,9 @@
   let framingRound = $state(false)
   let disposed = false
   let navigation = 0
-  const used = new Set<string>()
+  const usedTiles = new Map<string, Set<string>>()
+  const visited = new Set<string>()
+  let rotation: { canvas: CanvasChoice; request: AbortController } | undefined
   const total = $derived(results.reduce((sum, result) => sum + result.total, 0))
   const playing = $derived(
     active &&
@@ -153,6 +164,11 @@
     cancelCenter()
     navigation++
     celebration?.abort()
+    const canvasId = source.presentation?.canvasId
+    if (canvasId) visited.add(canvasId)
+    const key = canvasId ?? source.url
+    const used = usedTiles.get(key) ?? new Set<string>()
+    usedTiles.set(key, used)
     target = chooseTile(source, used, difficulty)
     used.add(target.key)
     guess = tileAtPosition(source, source.levels[0], [
@@ -179,7 +195,10 @@
   function restart(fit = true) {
     scoreDialog?.close()
     results = []
-    used.clear()
+    rotation?.request.abort()
+    rotation = undefined
+    usedTiles.clear()
+    visited.clear()
     nextRound(fit)
   }
   export function submit() {
@@ -199,11 +218,28 @@
       void map?.celebratePosition(celebration.signal)
     }
   }
-  function advance() {
+  async function advance() {
+    if (rotation || loading || phase === 'finished') return
     if (results.length === roundCount) {
       phase = 'finished'
       scoreDialog.showModal()
-    } else nextRound()
+      return
+    }
+    const canvas =
+      manifest &&
+      source.presentation &&
+      nextGameCanvas(manifest.canvases, source.presentation.canvasId, visited)
+    if (!canvas) {
+      nextRound()
+      return
+    }
+    const request = new AbortController()
+    rotation = { canvas, request }
+    const loaded = await oncanvas(canvas, request.signal)
+    if (!loaded && !disposed && rotation?.request === request) {
+      rotation = undefined
+      nextRound()
+    }
   }
   export function skip() {
     if (
@@ -366,8 +402,16 @@
   }
   $effect(() => {
     source
-    // A fresh session mounts on every entry. The shared map fits after resizing.
-    untrack(() => restart(false))
+    untrack(() => {
+      if (
+        rotation &&
+        source.presentation?.canvasId === rotation.canvas.id &&
+        manifest?.canvases.includes(rotation.canvas)
+      ) {
+        rotation = undefined
+        nextRound(false)
+      } else restart(false)
+    })
   })
   $effect(() => {
     const running = playing
@@ -406,6 +450,7 @@
   })
   onDestroy(() => {
     disposed = true
+    rotation?.request.abort()
     cancelCenter()
     celebration?.abort()
   })
@@ -566,7 +611,7 @@
               target && guess && map?.focusComparison(guess, target)}
             ><CrosshairSimple size={20} /></button
           >
-          <button class="primary-button" onclick={advance}
+          <button class="primary-button" onclick={advance} disabled={loading}
             >{results.length === roundCount
               ? 'See score'
               : 'Next tile'}<ArrowRight size={18} /></button
@@ -663,7 +708,12 @@
             >. You can also drag the figure onto a tile.
           </li>
         {/if}
-        <li>Compare your guess with the answer, then try the next tile.</li>
+        <li>
+          Compare your guess with the answer, then try the next tile.
+          {#if manifest && manifest.canvases.length > 1}
+            Each new round takes you to a random canvas in this manifest.
+          {/if}
+        </li>
       </ol>
       <p>
         Five tiles. Up to 1,000 points each for speed and accuracy. The clock

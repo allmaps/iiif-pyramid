@@ -1,7 +1,24 @@
 import { tileAt } from './iiif.ts'
 import type { ImageSource, Tile } from './iiif.ts'
+import type { CanvasChoice } from './iiif-source.ts'
 
 export const roundCount = 5
+
+export function nextGameCanvas(
+  canvases: CanvasChoice[],
+  current: string,
+  visited: Set<string>,
+  random = Math.random
+) {
+  const others = canvases.filter((canvas) => canvas.id !== current)
+  if (!others.length) return
+  let choices = others.filter((canvas) => !visited.has(canvas.id))
+  if (!choices.length) {
+    visited.clear()
+    choices = others
+  }
+  return choices[Math.floor(random() * choices.length)]
+}
 
 export const difficulties = [
   {
