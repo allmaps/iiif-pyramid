@@ -27,7 +27,8 @@
   data-overlay-obstacle
   class:pyramid-minimap={kind === 'pyramid'}
   class:collapsed
-  hidden={!visible}
+  style:visibility={visible ? undefined : 'hidden'}
+  inert={!visible}
   role="group"
   aria-label={`${kind === 'image' ? 'Image' : 'Pyramid'} minimap`}
 >

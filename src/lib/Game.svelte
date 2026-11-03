@@ -187,7 +187,7 @@
       const round = target
       void tick().then(async () => {
         if (disposed || target !== round) return
-        await map?.focusLevel(source.levels[0], tileCenter(guess!))
+        await map?.focusLevel(source.levels[0], tileCenter(guess!), true)
         if (!disposed && target === round) framingRound = false
       })
     }

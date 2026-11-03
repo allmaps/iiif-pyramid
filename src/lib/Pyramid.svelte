@@ -757,7 +757,7 @@
       </nav>
     </div>
   {/if}
-  {#if notice}<div class="source-notice" role="status">
+  {#if notice}<div class="source-notice" data-fit-obstacle role="status">
       {notice}<button
         class="icon-button"
         aria-label="Dismiss source notice"
@@ -776,6 +776,7 @@
     {#if source}
       {#if !pyramidOnly}<section
           class="view-panel image-panel"
+          data-fit-obstacle={!game && layout === 'pyramid' ? true : undefined}
           aria-label="Image viewer"
           inert={game}
           aria-hidden={game}
@@ -825,6 +826,7 @@
         <!-- svelte-ignore a11y_no_noninteractive_tabindex, a11y_no_noninteractive_element_interactions (WAI-ARIA window splitter with keyboard resizing.) -->
         <div
           class="split-handle"
+          data-fit-obstacle
           role="separator"
           tabindex="0"
           aria-orientation={stacked ? 'horizontal' : 'vertical'}
@@ -869,6 +871,7 @@
       {/if}
       <section
         class="view-panel pyramid-panel"
+        data-fit-obstacle={!game && layout === 'image' ? true : undefined}
         class:game-pyramid={game}
         aria-label={game ? 'Game pyramid' : 'Tile pyramid'}
         use:floatingPanel={{

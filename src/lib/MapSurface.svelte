@@ -3,6 +3,7 @@
   import { base } from '$app/paths'
   import { Spring } from 'svelte/motion'
   import { figureFlightPosition } from './figure-flight'
+  import { fitPadding } from './fit-padding'
   import type { FigureFlight } from './figure-flight'
   import { Map as MapLibreMap, LngLat, setWorkerUrl } from 'maplibre-gl'
   import type { CameraOptions } from 'maplibre-gl'
@@ -168,6 +169,7 @@
   let size = $state({ width: 1, height: 1 })
   let camera = $state<Point[]>([])
   let zoomedIn = $state(false)
+  let overviewZoom: number | undefined
   let position = $state<{ screen: Point; world: Point }>()
   const figureMotion = new Spring<Point>([0, 0], {
     stiffness: 0.14,
@@ -565,16 +567,7 @@
     const canvas = map.getCanvas()
     if (!canvas.clientWidth || !canvas.clientHeight) return
     size = { width: canvas.clientWidth, height: canvas.clientHeight }
-    const [x0, y0, x1, y1] = scene.bounds
-    const overview = map.cameraForBounds(
-      [
-        [x0, y0],
-        [x1, y1]
-      ],
-      { padding: kind === 'image' ? 48 : 62, maxZoom: 20 }
-    )
-    zoomedIn =
-      overview?.zoom !== undefined && map.getZoom() > overview.zoom + 0.05
+    zoomedIn = overviewZoom !== undefined && map.getZoom() > overviewZoom + 0.05
     const finest = scene.layers[0]
     if (kind === 'image') {
       const warped = layer.getWarpedMap(finest.id)
@@ -927,48 +920,82 @@
     if (!signal.aborted && !disposed) {
       // Mode entry begins at the overview immediately, then makes just one
       // flight to the top tile after the canvas has its final dimensions.
-      await fit(false)
+      fit(false)
       if (level && !signal.aborted && !disposed)
         await focusLevel(
           level,
-          center ?? [source.image.width / 2, source.image.height / 2]
+          center ?? [source.image.width / 2, source.image.height / 2],
+          true
         )
     }
   }
 
-  async function fit(animate = true) {
+  function cameraForContent(box: Bounds, maxZoom: number, showMinimap = false) {
+    const frame = container.getBoundingClientRect()
+    const panel = container.closest('.view-panel')
+    const app = container.closest('.explorer-app')
+    const obstacles: Bounds[] = []
+    for (const control of app!.querySelectorAll<HTMLElement>(
+      '[data-overlay-obstacle], [data-fit-obstacle], .panel-toolbar button'
+    )) {
+      const owner = control.closest('.view-panel')
+      if (control === panel || (owner && owner !== panel && control !== owner))
+        continue
+      // The overview hides its minimap. A closer opening fit needs to leave
+      // room for it even before the flight makes it visible.
+      if (control.matches('.minimap')) {
+        if (!showMinimap) continue
+      } else if (control.closest('[inert]')) continue
+      const rect = control.getBoundingClientRect()
+      if (
+        rect.width &&
+        rect.height &&
+        rect.right > frame.left &&
+        rect.left < frame.right &&
+        rect.bottom > frame.top &&
+        rect.top < frame.bottom
+      )
+        obstacles.push([
+          rect.left - frame.left,
+          rect.top - frame.top,
+          rect.right - frame.left,
+          rect.bottom - frame.top
+        ])
+    }
+    const [x0, y0, x1, y1] = box
+    const padding = fitPadding(
+      frame.width,
+      frame.height,
+      (x1 - x0) / (y1 - y0),
+      obstacles,
+      kind === 'image' ? 48 : 62
+    )
+    return map!.cameraForBounds(
+      [
+        [x0, y0],
+        [x1, y1]
+      ],
+      { padding, maxZoom }
+    )
+  }
+
+  function overviewCamera() {
+    const camera = scene && cameraForContent(scene.bounds, 20)
+    overviewZoom = camera?.zoom
+    return camera
+  }
+
+  function fit(animate = true) {
     if (!map || !scene) return
-    // A previous flight's moveend must not resolve this fit's completion.
     endFollowingFlight(false)
     interruptingNavigation = true
     map.stop()
     interruptingNavigation = false
     focusedFactor = undefined
-    const [x0, y0, x1, y1] = scene.bounds
-    if (!animate) {
-      const camera = map.cameraForBounds(
-        [
-          [x0, y0],
-          [x1, y1]
-        ],
-        { padding: kind === 'image' ? 48 : 62, maxZoom: 20 }
-      )
-      if (camera) map.jumpTo(camera)
-      return
-    }
-    const flight = map.once('moveend')
-    map.fitBounds(
-      [
-        [x0, y0],
-        [x1, y1]
-      ],
-      {
-        padding: kind === 'image' ? 48 : 62,
-        maxZoom: 20,
-        linear: kind === 'image'
-      }
-    )
-    await flight
+    const camera = overviewCamera()
+    if (!camera) return
+    if (animate) animateCamera(camera)
+    else map.jumpTo(camera)
   }
 
   export function getExportSnapshot(): PyramidSnapshot | undefined {
@@ -1074,7 +1101,7 @@
   }
 
   export function fitToView() {
-    navigate(() => void fit())
+    navigate(() => fit())
   }
 
   /** Recenter a game guess without changing the resolution or camera zoom. */
@@ -1156,7 +1183,11 @@
     )
   }
 
-  export async function focusLevel(level: Level, center?: Point) {
+  export async function focusLevel(
+    level: Level,
+    center?: Point,
+    opening = false
+  ) {
     if (!map || !layer || !scene) return
     const item = scene.layers.find(
       (item) => item.level.scaleFactor === level.scaleFactor
@@ -1219,6 +1250,11 @@
             transformer.transformToProjectedGeo(point)
           )
         )
+        if (opening) {
+          const camera = cameraForContent([x0, y0, x1, y1], 24, minimaps)
+          if (camera) flyWithFigure(camera)
+          return
+        }
         const camera = map.cameraForBounds(
           [
             [x0, y0],
@@ -1257,14 +1293,7 @@
         (item) => item.level.scaleFactor === positionFactor
       )
       if (!item) return
-      const [x0, y0, x1, y1] = bounds(item.corners)
-      const camera = map.cameraForBounds(
-        [
-          [x0, y0],
-          [x1, y1]
-        ],
-        { padding: 70, maxZoom: 24 }
-      )
+      const camera = cameraForContent(bounds(item.corners), 24, minimaps)
       if (!camera) return
       // Wait for the initial overview and image viewport, then bring the tiny
       // current plane into view once. This flight never drives the image back.
@@ -1357,25 +1386,22 @@
       sceneSource = current
       sceneVersion++
       if (initialCamera && !figurePlacement) {
+        overviewCamera()
         focusedFactor = initialFocusedLevel
         map!.jumpTo(initialCamera)
       } else if (kind === 'image' && initialRegion) {
         const transformer = layer!.getWarpedMap(
           scene.layers[0].id
         )!.projectedTransformer
-        const [x0, y0, x1, y1] = bounds(
+        overviewCamera()
+        const box = bounds(
           rectangle(initialRegion).map((point) =>
             transformer.transformToProjectedGeo(point)
           )
         )
-        map!.fitBounds(
-          [
-            [x0, y0],
-            [x1, y1]
-          ],
-          { padding: 48, maxZoom: 24, duration: 0, linear: true }
-        )
-      } else void fit(false)
+        const camera = cameraForContent(box, 24, minimaps)
+        if (camera) map!.jumpTo(camera)
+      } else fit(false)
       // Fitting an unchanged overview can emit moveend synchronously. Arm the
       // startup flight afterward so it cannot be interrupted by that same fit.
       initialPyramidFocus =
@@ -1433,13 +1459,15 @@
       appliedGame = game
       if (modeChanged && !game) {
         focusedFactor = explorerFocus
-        if (explorerCamera) map!.jumpTo(explorerCamera)
-        else {
+        if (explorerCamera) {
+          overviewCamera()
+          map!.jumpTo(explorerCamera)
+        } else {
           // A direct game URL has no previous explorer camera to restore.
           layoutFrameRequest = new AbortController()
           void fitAfterResize(layoutFrameRequest.signal)
         }
-      } else if (layoutChanged || (modeChanged && game)) void fit(false)
+      } else if (layoutChanged || (modeChanged && game)) fit(false)
       refresh()
     })
   })
@@ -1619,6 +1647,7 @@
       clearTimeout(resizeTimeout)
       resizeTimeout = setTimeout(() => {
         resizingView = false
+        overviewCamera()
         refresh()
         if (map?.isMoving()) return
         if (manualNavigation) navigationEnded()
