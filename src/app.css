@@ -1959,6 +1959,10 @@ select:focus-visible {
   justify-content: space-between;
   margin: 0 2px 8px;
 }
+.game-timer {
+  display: grid;
+  grid-template-columns: 14px 6ch;
+}
 .game-hint {
   position: relative;
   width: 100%;
