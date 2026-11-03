@@ -29,7 +29,7 @@ hosts that support it. No backend or deployed image proxy is needed.
 For a subdirectory deployment, set the base path without a trailing slash:
 
 ```sh
-BASE_PATH=/pyramid pnpm build
+VITE_SITE_URL=https://example.org/pyramid/ BASE_PATH=/pyramid pnpm build
 BASE_PATH=/pyramid pnpm preview
 ```
 
@@ -37,5 +37,9 @@ Open `/pyramid/` in the preview. The service worker, virtual IIIF endpoints,
 navigation links and generated embed links all stay within this base path.
 Build without `BASE_PATH` to return to root hosting. Allow iframe embedding if
 using the embed route; image services must allow cross-origin browser requests.
+
+Set `VITE_SITE_URL` to the public URL, including any subdirectory, when building
+for another host. It sets the canonical and social preview URLs in the static
+HTML. The Pages workflow supplies this URL automatically.
 
 [Back to README](../README.md)
