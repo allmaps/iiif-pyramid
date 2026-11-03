@@ -658,9 +658,9 @@
         {:else}
           <li>Pan and zoom to find the right image region and resolution.</li>
           <li>
-            Drag the figure onto your tile, then choose <strong
+            Click or tap a tile on any level to place the figure, then choose <strong
               >Submit guess</strong
-            >. You can also click a tile to place it.
+            >. You can also drag the figure onto a tile.
           </li>
         {/if}
         <li>Compare your guess with the answer, then try the next tile.</li>

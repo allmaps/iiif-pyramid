@@ -6,6 +6,7 @@
   import type { FigureFlight } from './figure-flight'
   import { Map as MapLibreMap, LngLat, setWorkerUrl } from 'maplibre-gl'
   import type { CameraOptions } from 'maplibre-gl'
+  import { handleTileTaps } from './tile-taps'
   import mapLibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
   import { WarpedMapEvent } from '@allmaps/render'
   import { Minus, Plus, CornersOut, PersonArmsSpread } from 'phosphor-svelte'
@@ -256,20 +257,9 @@
   })
 
   function opacity(item: SceneLayer) {
-    if (draggingFigure) return 1
-    if (
-      answer &&
-      selected &&
-      [answer.level.scaleFactor, selected.level.scaleFactor].includes(
-        item.level.scaleFactor
-      )
-    )
-      return 1
+    if (figurePlacement || draggingFigure) return 1
     return kind === 'pyramid' &&
-      item.level.scaleFactor >
-        (figurePlacement && !answer
-          ? activeFactor
-          : (focusedFactor ?? activeFactor))
+      item.level.scaleFactor > (focusedFactor ?? activeFactor)
       ? 0.18
       : 1
   }
@@ -456,7 +446,6 @@
     // Hover and click share the same front-to-back hit test. Faded layers
     // must not intercept the tile on the active plane below them.
     for (const item of scene.layers) {
-      if (figurePlacement && item.level.scaleFactor !== activeFactor) continue
       if (opacity(item) < 0.5) continue
       const p = resource(item, point)
       if (
@@ -1460,12 +1449,15 @@
     focusedFactor
     draggingFigure
     figurePlacement
-    answer
-    selected
     sceneVersion
     if (!ready || !scene) return
     untrack(() => {
       cancelAnimationFrame(opacityFrame)
+      if (figurePlacement) {
+        layer!.setMapsOptions(() => ({ opacity: 1 }), { animate: false })
+        refresh()
+        return
+      }
       const starts = new Map(
         scene!.layers.map((item) => [
           item.id,
@@ -1674,6 +1666,11 @@
       publishHover()
     })
     map.on('touchstart', clearHover)
+    handleTileTaps(
+      map,
+      () => figurePlacement && figureInteractive,
+      (point) => onselect(tileAtPoint(point)?.tile)
+    )
     return () => {
       disposed = true
       layoutFrameRequest?.abort()

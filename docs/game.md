@@ -24,9 +24,9 @@ difficulty during a game offers **Start new game**. With a controller, left/righ
 in the explainer changes the difficulty and A confirms it.
 Move the target card by dragging its image or title. The card stays
 inside the canvas, and its handle also supports arrow keys.
-Choose a level with its label, the minimap, or `[` / `]`. Upper unselected
-layers fade and clicks stay on the active level. Picking up the figure exposes
-all layers, so a drag can place it on a different resolution.
+Click or tap any visible tile to choose both its position and its resolution.
+You can also drag the figure between levels, or change levels using a label,
+the minimap, or `[` / `]`. Every game layer stays fully opaque.
 Press `B` on the keyboard or controller, or use the grid button to show or hide tile
 boundaries. Guess and answer outlines remain visible. This game preference
 starts on and is separate from the explorer's grid setting.
