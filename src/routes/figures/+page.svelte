@@ -1,6 +1,7 @@
 <script lang="ts">
   import { base } from '$app/paths'
   import PositionFigure from '$lib/PositionFigure.svelte'
+  import PageMetadata from '$lib/PageMetadata.svelte'
   import iiifLogo from '$lib/images/iiif-logo.svg'
   import type { FigurePalette, FigureVariant } from '$lib/iiif-figure'
 
@@ -45,9 +46,11 @@
     `${base}/?url=https%3A%2F%2Fiiif.micr.io%2FERwIn&figureStyle=${variant}&figurePalette=${palette}`
 </script>
 
-<svelte:head>
-  <title>Position figures — Allmaps IIIF Pyramid</title>
-</svelte:head>
+<PageMetadata
+  title="Position figures — Allmaps IIIF Pyramid"
+  description="Explore the position markers in Allmaps IIIF Pyramid, including animated figures made from the letters of the IIIF logo."
+  path="figures/"
+/>
 
 <main class="figure-studies">
   <header>

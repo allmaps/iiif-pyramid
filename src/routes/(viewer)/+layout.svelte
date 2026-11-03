@@ -1,18 +1,20 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
+  import { browser } from '$app/environment'
   import { page } from '$app/state'
   import Pyramid from '$lib/Pyramid.svelte'
 
   let { children }: { children: Snippet } = $props()
+  const params = $derived(browser ? page.url.searchParams : undefined)
   const figureVariant = $derived(
-    page.url.searchParams.get('figureStyle') === 'original'
+    params?.get('figureStyle') === 'original'
       ? 'original'
-      : page.url.searchParams.get('figureStyle') === 'iiif-open'
+      : params?.get('figureStyle') === 'iiif-open'
         ? 'iiif-open'
         : 'iiif'
   )
   const figurePalette = $derived(
-    page.url.searchParams.get('figurePalette') === 'app' ? 'app' : 'iiif'
+    params?.get('figurePalette') === 'app' ? 'app' : 'iiif'
   )
 </script>
 

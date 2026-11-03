@@ -61,6 +61,11 @@ select:focus-visible {
   display: flex;
   flex-direction: column;
 }
+@media (scripting: none) {
+  .explorer-app {
+    display: none;
+  }
+}
 .brand {
   color: inherit;
   text-decoration: none;

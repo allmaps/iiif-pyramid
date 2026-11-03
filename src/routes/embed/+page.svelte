@@ -1,7 +1,13 @@
 <script lang="ts">
   import { page } from '$app/state'
+  import { onMount } from 'svelte'
+  import PageMetadata from '$lib/PageMetadata.svelte'
   import Pyramid from '$lib/Pyramid.svelte'
   import { readEmbedOptions } from '$lib/embed-options'
+  let mounted = $state(false)
+  onMount(() => {
+    mounted = true
+  })
   const options = $derived(readEmbedOptions(page.url.searchParams))
   const figureVariant = $derived(
     page.url.searchParams.get('figureStyle') === 'original'
@@ -15,10 +21,10 @@
   )
 </script>
 
-<svelte:head
-  ><title>Allmaps IIIF Pyramid</title><meta
-    name="robots"
-    content="noindex"
-  /></svelte:head
->
-<Pyramid embed={options} {figureVariant} {figurePalette} />
+<PageMetadata
+  title="Allmaps IIIF Pyramid"
+  description="An embedded, interactive view of an IIIF image and its tile pyramid."
+  path="embed/"
+  noindex
+/>
+{#if mounted}<Pyramid embed={options} {figureVariant} {figurePalette} />{/if}
