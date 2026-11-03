@@ -45,18 +45,25 @@
   import logo from './images/allmaps-logo.svg'
   import { examples, isLargePyramid } from './iiif'
   import { prepareTileProxy } from './service-worker'
+  import { defaultHunterOutfit } from './iiif-figure'
   import type { ImageSource, Tile, Level } from './iiif'
   import type { Bounds, Point, TiltDirection, PyramidLayout } from './geometry'
-  import type { FigureVariant, FigurePalette } from './iiif-figure'
+  import type {
+    FigureVariant,
+    FigurePalette,
+    HunterOutfit
+  } from './iiif-figure'
 
   let {
     figureVariant = 'iiif',
     figurePalette = 'iiif',
+    hunterOutfit = defaultHunterOutfit,
     game = false,
     embed
   }: {
     figureVariant?: FigureVariant
     figurePalette?: FigurePalette
+    hunterOutfit?: HunterOutfit
     game?: boolean
     embed?: EmbedOptions
   } = $props()
@@ -864,6 +871,7 @@
           pyramidLayout={game ? 'adjacent' : pyramidLayout}
           showPositionFigure={game || showPositionFigure}
           figurePlacement={game}
+          outfit={game ? hunterOutfit : undefined}
           figureInteractive={!game || gameCanPlace}
           {figureVariant}
           {figurePalette}

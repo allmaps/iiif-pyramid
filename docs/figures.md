@@ -7,6 +7,13 @@ blue i's are inverted legs with dotted feet, and the f is split into two arms.
 Dragging smoothly spreads the legs and raises both arms. Reduced-motion
 preferences disable the transition.
 
+The Tile Hunt outfits section at
+`/figures/#hunters` shows each hunter at marker size and enlarged. Use
+**Lift figures** to compare the dragging poses, or **Try in Tile Hunt** to play
+with that outfit. The hunter wears the feathered Alpine hat and knotted scarf
+by default. To try another outfit, use `?outfit=bicorne`,
+`?outfit=deerstalker`, or `?outfit=ranger`.
+
 `PositionFigure` accepts `variant="iiif" | "iiif-open" | "original"` and
 `palette="iiif" | "app"`, defaulting to the IIIF wave and original red/blue.
 Use `<PositionFigure variant="original" palette="app" />` for the previous figure.

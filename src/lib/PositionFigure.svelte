@@ -3,7 +3,8 @@
   import { Tween, prefersReducedMotion } from 'svelte/motion'
   import { cubicOut } from 'svelte/easing'
   import { figurePalettes, iiifFigureParts } from './iiif-figure'
-  import type { FigureOptions } from './iiif-figure'
+  import HunterGear from './HunterGear.svelte'
+  import type { FigureOptions, HunterOutfit } from './iiif-figure'
   import {
     figureBody,
     figureLimbs,
@@ -15,6 +16,7 @@
     invalid = false,
     tilt = 0,
     shadow = true,
+    outfit,
     variant = 'iiif',
     palette = 'iiif'
   }: FigureOptions & {
@@ -22,6 +24,7 @@
     invalid?: boolean
     tilt?: number
     shadow?: boolean
+    outfit?: HunterOutfit
   } = $props()
   const extension = new Tween(
     untrack(() => (dragging ? 1 : 0)),
@@ -112,6 +115,9 @@
           data-part={part.id}
         />
       {/each}
+    {/if}
+    {#if outfit}
+      <HunterGear {outfit} accent={color} {invalid} />
     {/if}
   </g>
 </svg>

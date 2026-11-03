@@ -3,9 +3,13 @@
   import { browser } from '$app/environment'
   import { page } from '$app/state'
   import Pyramid from '$lib/Pyramid.svelte'
+  import { hunterOutfits } from '$lib/iiif-figure'
 
   let { children }: { children: Snippet } = $props()
   const params = $derived(browser ? page.url.searchParams : undefined)
+  const hunterOutfit = $derived(
+    hunterOutfits.find((outfit) => outfit.id === params?.get('outfit'))?.id
+  )
   const figureVariant = $derived(
     params?.get('figureStyle') === 'original'
       ? 'original'
@@ -23,5 +27,6 @@
   game={page.route.id === '/(viewer)/game'}
   {figureVariant}
   {figurePalette}
+  {hunterOutfit}
 />
 {@render children()}

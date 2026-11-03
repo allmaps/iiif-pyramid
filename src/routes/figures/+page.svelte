@@ -3,6 +3,7 @@
   import PositionFigure from '$lib/PositionFigure.svelte'
   import PageMetadata from '$lib/PageMetadata.svelte'
   import iiifLogo from '$lib/images/iiif-logo.svg'
+  import { defaultHunterOutfit, hunterOutfits } from '$lib/iiif-figure'
   import type { FigurePalette, FigureVariant } from '$lib/iiif-figure'
 
   const alternatives: {
@@ -42,6 +43,7 @@
     }
   ]
   let lifted = $state<string[]>([])
+  let huntersLifted = $state(false)
   const appUrl = (variant: FigureVariant, palette: FigurePalette) =>
     `${base}/?url=https%3A%2F%2Fiiif.micr.io%2FERwIn&figureStyle=${variant}&figurePalette=${palette}`
 </script>
@@ -68,6 +70,60 @@
       >
     </div>
   </header>
+
+  <section
+    class="hunter-studies"
+    id="hunters"
+    aria-labelledby="hunters-heading"
+  >
+    <div class="hunter-heading">
+      <h2 id="hunters-heading">Tile Hunt outfits</h2>
+      <button
+        aria-pressed={huntersLifted}
+        onclick={() => (huntersLifted = !huntersLifted)}
+      >
+        {huntersLifted ? 'Set figures down' : 'Lift figures'}
+      </button>
+    </div>
+    <div class="hunters">
+      {#each hunterOutfits as outfit (outfit.id)}
+        <article class="alternative">
+          <div class="hunter-poses">
+            <div class="large-figure">
+              <PositionFigure
+                outfit={outfit.id}
+                dragging={huntersLifted}
+                shadow={false}
+              />
+            </div>
+            <div class="marker-size">
+              <PositionFigure
+                outfit={outfit.id}
+                dragging={huntersLifted}
+                shadow={false}
+              /><span>Actual size</span>
+            </div>
+          </div>
+          <div class="card-heading">
+            <div>
+              <h3>{outfit.title}</h3>
+              <p>{outfit.detail}</p>
+            </div>
+            {#if outfit.id === defaultHunterOutfit}
+              <span class="default-badge">Default</span>
+            {/if}
+          </div>
+          <footer>
+            <a
+              href={`${base}/game/?outfit=${outfit.id}`}
+              aria-label={`Try the ${outfit.title.toLowerCase()} in Tile Hunt`}
+              >Try in Tile Hunt <span aria-hidden="true">↗</span></a
+            >
+          </footer>
+        </article>
+      {/each}
+    </div>
+  </section>
 
   <div class="alternatives">
     {#each alternatives as option}
@@ -185,6 +241,48 @@
     max-width: 1200px;
     margin: auto;
   }
+  .hunter-studies {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+  }
+  .hunter-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .hunter-heading button {
+    border: 1px solid #b8cabb;
+    border-radius: 5px;
+    background: white;
+    padding: 5px 10px;
+    font: inherit;
+    font-size: 12px;
+  }
+  .hunters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 225px), 1fr));
+    gap: 14px;
+  }
+  .hunter-poses {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 20px;
+    padding: 18px 8px 8px;
+    background-color: #202723;
+    background-image: radial-gradient(#ffffff36 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  .marker-size {
+    display: grid;
+    justify-items: center;
+    color: #c7d3cb;
+    font-size: 10px;
+  }
+  .marker-size :global(svg) {
+    overflow: visible;
+  }
   .alternative {
     border: 1px solid #b8cabb;
     border-radius: 10px;
@@ -203,7 +301,8 @@
     align-self: flex-start;
     padding-top: 4px;
   }
-  h2 {
+  h2,
+  h3 {
     font-size: 16px;
     font-weight: 500;
     margin: 0 0 4px;

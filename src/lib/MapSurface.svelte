@@ -14,7 +14,11 @@
   import FollowControl from './FollowControl.svelte'
   import { tileCenter } from './tile-navigation'
   import PositionFigure from './PositionFigure.svelte'
-  import type { FigureVariant, FigurePalette } from './iiif-figure'
+  import type {
+    FigureVariant,
+    FigurePalette,
+    HunterOutfit
+  } from './iiif-figure'
   import Minimap from './Minimap.svelte'
   import ImageOverview from './ImageOverview.svelte'
   import {
@@ -65,6 +69,7 @@
     figureInteractive = true,
     figureVariant = 'iiif',
     figurePalette = 'iiif',
+    outfit,
     tiltDirection = 'right',
     pyramidLayout = 'stacked',
     follow = false,
@@ -107,6 +112,7 @@
     figureInteractive?: boolean
     figureVariant?: FigureVariant
     figurePalette?: FigurePalette
+    outfit?: HunterOutfit
     tiltDirection?: TiltDirection
     pyramidLayout?: PyramidLayout
     follow?: boolean
@@ -1923,6 +1929,7 @@
       >
         <PositionFigure
           shadow={false}
+          {outfit}
           variant={figureVariant}
           palette={figurePalette}
           dragging={figureAirborne}

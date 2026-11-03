@@ -1,5 +1,25 @@
 export type FigureVariant = 'iiif' | 'iiif-open' | 'original'
 export type FigurePalette = 'iiif' | 'app'
+export const hunterOutfits = [
+  { id: 'bicorne', title: 'Bicorne', detail: 'Gold trim and a cockade.' },
+  {
+    id: 'deerstalker',
+    title: 'Deerstalker',
+    detail: 'Checked tweed and a pocket magnifier.'
+  },
+  {
+    id: 'alpine',
+    title: 'Alpine hat',
+    detail: 'A pheasant feather and a knotted scarf.'
+  },
+  {
+    id: 'ranger',
+    title: 'Ranger hat',
+    detail: 'A broad felt brim and field binoculars.'
+  }
+] as const
+export type HunterOutfit = (typeof hunterOutfits)[number]['id']
+export const defaultHunterOutfit: HunterOutfit = 'alpine'
 export type FigureOptions = {
   variant?: FigureVariant
   palette?: FigurePalette
