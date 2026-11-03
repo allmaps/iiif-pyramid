@@ -19,11 +19,12 @@
     ).replace(/\/+$/, '') + '/'
   const canonical = $derived(new URL(path, site).href)
   const image = $derived(
-    new URL(game ? 'social/tile-hunt.jpg' : 'social/pyramid.jpg', site).href
+    new URL(game ? 'social/tile-hunt.jpg?v=alpine' : 'social/pyramid.jpg', site)
+      .href
   )
   const alt = $derived(
     game
-      ? 'Allmaps IIIF Tile Hunt. Isometric levels of The Night Watch lie side by side, with the captain’s tile outlined in pink.'
+      ? 'Allmaps IIIF Tile Hunt. A hunter in a feathered Alpine hat and scarf stands on a pink-outlined tile in the isometric pyramid of The Night Watch.'
       : 'Allmaps IIIF Pyramid. Stacked levels of The Night Watch show the tile grid, with the captain’s tile outlined in pink.'
   )
 </script>
