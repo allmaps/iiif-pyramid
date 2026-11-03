@@ -146,7 +146,8 @@ export function parseManifest(
 ): ManifestSource {
   const raw = object(value)
   const v2 = type(raw) === 'Manifest' && !!raw['@id']
-  const url = id(raw) || requested || ''
+  // Reopen the same document when a manifest is being served from a mirror.
+  const url = requested || id(raw)
   httpUrl(url)
   const canvases = v2
     ? array(object(array(raw.sequences)[0]).canvases)

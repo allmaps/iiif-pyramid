@@ -1,0 +1,1838 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer.json",
+  "type": "Manifest",
+  "label": {
+    "en": ["Closer to Johannes Vermeer"],
+    "nl": ["Dichter bij Johannes Vermeer"]
+  },
+  "summary": {
+    "en": [
+      "The 37 paintings in the Rijksmuseum’s online exhibition. The Geographer and The Astronomer share one image."
+    ],
+    "nl": [
+      "De 37 schilderijen uit de online tentoonstelling van het Rijksmuseum. De geograaf en De astronoom staan samen op één afbeelding."
+    ]
+  },
+  "homepage": [
+    {
+      "id": "https://www.rijksmuseum.nl/nl/johannes-vermeer",
+      "type": "Text",
+      "label": {
+        "en": ["Rijksmuseum exhibition"],
+        "nl": ["Tentoonstelling Rijksmuseum"]
+      },
+      "format": "text/html"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/VInRq",
+      "type": "Canvas",
+      "label": {
+        "en": ["View of Delft"],
+        "nl": ["Gezicht op Delft"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Mauritshuis, The Hague"],
+            "nl": ["Mauritshuis, Den Haag"]
+          }
+        }
+      ],
+      "width": 6000,
+      "height": 5011,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/VInRq/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/VInRq/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/VInRq",
+              "body": {
+                "id": "https://iiif.micr.io/VInRq/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 6000,
+                "height": 5011,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/VInRq",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/atzQE",
+      "type": "Canvas",
+      "label": {
+        "en": ["View of Houses in Delft, known as ‘The Little Street’"],
+        "nl": ["Gezicht op huizen in Delft, bekend als 'Het straatje'"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Rijksmuseum, Amsterdam"],
+            "nl": ["Rijksmuseum, Amsterdam"]
+          }
+        }
+      ],
+      "width": 88583,
+      "height": 108640,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/atzQE/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/atzQE/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/atzQE",
+              "body": {
+                "id": "https://iiif.micr.io/atzQE/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 88583,
+                "height": 108640,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/atzQE",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/FqleT",
+      "type": "Canvas",
+      "label": {
+        "en": ["A Maid Asleep"],
+        "nl": ["Slapende jonge vrouw"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Metropolitan Museum of Art, New York"],
+            "nl": ["The Metropolitan Museum of Art, New York"]
+          }
+        }
+      ],
+      "width": 5285,
+      "height": 6066,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/FqleT/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/FqleT/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/FqleT",
+              "body": {
+                "id": "https://iiif.micr.io/FqleT/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5285,
+                "height": 6066,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/FqleT",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/zwzqR",
+      "type": "Canvas",
+      "label": {
+        "en": ["Girl Reading a Letter at an Open Window"],
+        "nl": ["Brieflezend meisje bij het venster"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Gemäldegalerie Alte Meister, Dresden"],
+            "nl": ["Gemäldegalerie Alte Meister, Dresden"]
+          }
+        }
+      ],
+      "width": 12523,
+      "height": 16014,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/zwzqR/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/zwzqR/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/zwzqR",
+              "body": {
+                "id": "https://iiif.micr.io/zwzqR/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 12523,
+                "height": 16014,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/zwzqR",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ebSgm",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Milkmaid"],
+        "nl": ["Het melkmeisje"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Rijksmuseum, Amsterdam"],
+            "nl": ["Rijksmuseum, Amsterdam"]
+          }
+        }
+      ],
+      "width": 85330,
+      "height": 94829,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ebSgm/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ebSgm/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ebSgm",
+              "body": {
+                "id": "https://iiif.micr.io/ebSgm/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 85330,
+                "height": 94829,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/ebSgm",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/upWsf",
+      "type": "Canvas",
+      "label": {
+        "en": ["Woman Reading a Letter"],
+        "nl": ["Brieflezende vrouw in blauw"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Rijksmuseum, Amsterdam"],
+            "nl": ["Rijksmuseum, Amsterdam"]
+          }
+        }
+      ],
+      "width": 77903,
+      "height": 92866,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/upWsf/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/upWsf/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/upWsf",
+              "body": {
+                "id": "https://iiif.micr.io/upWsf/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 77903,
+                "height": 92866,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/upWsf",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/UPgdu",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Lacemaker"],
+        "nl": ["De kantwerkster"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Musée du Louvre, Parijs"],
+            "nl": ["Musée du Louvre, Parijs"]
+          }
+        }
+      ],
+      "width": 4573,
+      "height": 5345,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/UPgdu/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/UPgdu/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/UPgdu",
+              "body": {
+                "id": "https://iiif.micr.io/UPgdu/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 4573,
+                "height": 5345,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/UPgdu",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/zxgDk",
+      "type": "Canvas",
+      "label": {
+        "en": ["Lady at the Virginals with a Gentleman"],
+        "nl": ["De muziekles"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Royal Collection Trust, Windsor/Londen"],
+            "nl": ["The Royal Collection Trust, Windsor/Londen"]
+          }
+        }
+      ],
+      "width": 5242,
+      "height": 6013,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/zxgDk/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/zxgDk/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/zxgDk",
+              "body": {
+                "id": "https://iiif.micr.io/zxgDk/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5242,
+                "height": 6013,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/zxgDk",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/tqAkN",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Concert"],
+        "nl": ["Het concert"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Isabella Stewart Gardner Museum, Boston (stolen)"],
+            "nl": ["Isabella Stewart Gardner Museum, Boston (gestolen)"]
+          }
+        }
+      ],
+      "width": 2199,
+      "height": 2484,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/tqAkN/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/tqAkN/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/tqAkN",
+              "body": {
+                "id": "https://iiif.micr.io/tqAkN/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2199,
+                "height": 2484,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/tqAkN",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/dZCWg",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Love Letter"],
+        "nl": ["De liefdesbrief"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Rijksmuseum, Amsterdam"],
+            "nl": ["Rijksmuseum, Amsterdam"]
+          }
+        }
+      ],
+      "width": 72885,
+      "height": 85274,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/dZCWg/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/dZCWg/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/dZCWg",
+              "body": {
+                "id": "https://iiif.micr.io/dZCWg/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 72885,
+                "height": 85274,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/dZCWg",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ShxMS",
+      "type": "Canvas",
+      "label": {
+        "en": ["Officer and Laughing Girl"],
+        "nl": ["De soldaat en het lachende meisje"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Frick Collection, New York"],
+            "nl": ["The Frick Collection, New York"]
+          }
+        }
+      ],
+      "width": 89547,
+      "height": 97746,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ShxMS/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ShxMS/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ShxMS",
+              "body": {
+                "id": "https://iiif.micr.io/ShxMS/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 89547,
+                "height": 97746,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/ShxMS",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/qiTiR",
+      "type": "Canvas",
+      "label": {
+        "en": ["Woman Writing a Letter, with her Maid"],
+        "nl": ["Schrijvende vrouw met dienstbode"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["National Gallery of Ireland, Dublin"],
+            "nl": ["National Gallery of Ireland, Dublin"]
+          }
+        }
+      ],
+      "width": 4444,
+      "height": 5400,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/qiTiR/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/qiTiR/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/qiTiR",
+              "body": {
+                "id": "https://iiif.micr.io/qiTiR/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 4444,
+                "height": 5400,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/qiTiR",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/VKugf",
+      "type": "Canvas",
+      "label": {
+        "en": ["Young Woman with a Lute"],
+        "nl": ["De luitspeelster"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Metropolitan Museum of Art, New York"],
+            "nl": ["The Metropolitan Museum of Art, New York"]
+          }
+        }
+      ],
+      "width": 5696,
+      "height": 6486,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/VKugf/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/VKugf/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/VKugf",
+              "body": {
+                "id": "https://iiif.micr.io/VKugf/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5696,
+                "height": 6486,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/VKugf",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/jIJuD",
+      "type": "Canvas",
+      "label": {
+        "en": ["A Lady Writing"],
+        "nl": ["Schrijvende vrouw in het geel"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["National Gallery of Art, Washington"],
+            "nl": ["National Gallery of Art, Washington"]
+          }
+        }
+      ],
+      "width": 17177,
+      "height": 19576,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/jIJuD/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/jIJuD/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/jIJuD",
+              "body": {
+                "id": "https://iiif.micr.io/jIJuD/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 17177,
+                "height": 19576,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/jIJuD",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/aytam",
+      "type": "Canvas",
+      "label": {
+        "en": ["Mistress and Maid"],
+        "nl": ["Dame en dienstmeid"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Frick Collection. New York"],
+            "nl": ["The Frick Collection. New York"]
+          }
+        }
+      ],
+      "width": 6677,
+      "height": 7659,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/aytam/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/aytam/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/aytam",
+              "body": {
+                "id": "https://iiif.micr.io/aytam/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 6677,
+                "height": 7659,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/aytam",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/TpdTK",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Glass of Wine"],
+        "nl": ["Het glas wijn"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Staatliche Museen zu Berlin – Gemäldegalerie"],
+            "nl": ["Staatliche Museen zu Berlin – Gemäldegalerie"]
+          }
+        }
+      ],
+      "width": 11343,
+      "height": 9795,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/TpdTK/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/TpdTK/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/TpdTK",
+              "body": {
+                "id": "https://iiif.micr.io/TpdTK/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 11343,
+                "height": 9795,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/TpdTK",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/lSIyp",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Girl with the Wine Glass"],
+        "nl": ["Jonge vrouw met een wijnglas"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Herzog Anton Ulrich-museum, Braunschweig"],
+            "nl": ["Herzog Anton Ulrich-museum, Braunschweig"]
+          }
+        }
+      ],
+      "width": 4863,
+      "height": 5703,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/lSIyp/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/lSIyp/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/lSIyp",
+              "body": {
+                "id": "https://iiif.micr.io/lSIyp/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 4863,
+                "height": 5703,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/lSIyp",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/iKIkB",
+      "type": "Canvas",
+      "label": {
+        "en": ["Girl Interrupted at Her Music"],
+        "nl": ["Onderbreking van de muziek"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Frick Collection. New York"],
+            "nl": ["The Frick Collection. New York"]
+          }
+        }
+      ],
+      "width": 82421,
+      "height": 72342,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/iKIkB/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/iKIkB/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/iKIkB",
+              "body": {
+                "id": "https://iiif.micr.io/iKIkB/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 82421,
+                "height": 72342,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/iKIkB",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/uwdYE",
+      "type": "Canvas",
+      "label": {
+        "en": ["Girl with a Pearl Earring"],
+        "nl": ["Meisje met de parel"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Mauritshuis, The Hague"],
+            "nl": ["Mauritshuis, Den Haag"]
+          }
+        }
+      ],
+      "width": 5059,
+      "height": 6000,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/uwdYE/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/uwdYE/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/uwdYE",
+              "body": {
+                "id": "https://iiif.micr.io/uwdYE/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5059,
+                "height": 6000,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/uwdYE",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/YVyPx",
+      "type": "Canvas",
+      "label": {
+        "en": ["Study of a Young Woman"],
+        "nl": ["Meisje met de sluier"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Metropolitan Museum of Art, New York"],
+            "nl": ["The Metropolitan Museum of Art, New York"]
+          }
+        }
+      ],
+      "width": 5604,
+      "height": 6279,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/YVyPx/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/YVyPx/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/YVyPx",
+              "body": {
+                "id": "https://iiif.micr.io/YVyPx/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5604,
+                "height": 6279,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/YVyPx",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ZUsfE",
+      "type": "Canvas",
+      "label": {
+        "en": ["Girl with the Red Hat"],
+        "nl": ["Meisje met de rode hoed"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["National Gallery of Art, Washington"],
+            "nl": ["National Gallery of Art, Washington"]
+          }
+        }
+      ],
+      "width": 12070,
+      "height": 15257,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ZUsfE/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ZUsfE/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ZUsfE",
+              "body": {
+                "id": "https://iiif.micr.io/ZUsfE/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 12070,
+                "height": 15257,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/ZUsfE",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/MyIMw",
+      "type": "Canvas",
+      "label": {
+        "en": ["Girl with a Flute"],
+        "nl": ["Meisje met de fluit"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["National Gallery of Art, Washington"],
+            "nl": ["National Gallery of Art, Washington"]
+          }
+        }
+      ],
+      "width": 11624,
+      "height": 12988,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/MyIMw/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/MyIMw/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/MyIMw",
+              "body": {
+                "id": "https://iiif.micr.io/MyIMw/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 11624,
+                "height": 12988,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/MyIMw",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/CJUFr",
+      "type": "Canvas",
+      "label": {
+        "en": ["Standing Virginal Player"],
+        "nl": ["Staande virginaalspeelster"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The National Gallery, London"],
+            "nl": ["The National Gallery, London"]
+          }
+        }
+      ],
+      "width": 5187,
+      "height": 5908,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/CJUFr/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/CJUFr/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/CJUFr",
+              "body": {
+                "id": "https://iiif.micr.io/CJUFr/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5187,
+                "height": 5908,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/CJUFr",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/mlyGD",
+      "type": "Canvas",
+      "label": {
+        "en": ["A Young Woman seated at a Virginal"],
+        "nl": ["Zittende virginaalspeelster"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The National Gallery, London"],
+            "nl": ["The National Gallery, London"]
+          }
+        }
+      ],
+      "width": 5387,
+      "height": 6075,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/mlyGD/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/mlyGD/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/mlyGD",
+              "body": {
+                "id": "https://iiif.micr.io/mlyGD/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5387,
+                "height": 6075,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/mlyGD",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/wvOoi",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Guitar Player"],
+        "nl": ["De gitaarspeelster"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Kenwood House, English Heritage, Londen"],
+            "nl": ["Kenwood House, English Heritage, Londen"]
+          }
+        }
+      ],
+      "width": 3896,
+      "height": 4485,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/wvOoi/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/wvOoi/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/wvOoi",
+              "body": {
+                "id": "https://iiif.micr.io/wvOoi/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 3896,
+                "height": 4485,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/wvOoi",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/AswjO",
+      "type": "Canvas",
+      "label": {
+        "en": ["Young Woman Seated at a Virginal"],
+        "nl": ["Zittende vrouw aan het virginaal"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Leiden Collection, New York"],
+            "nl": ["Leiden Collection, New York City"]
+          }
+        }
+      ],
+      "width": 36837,
+      "height": 47118,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/AswjO/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/AswjO/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/AswjO",
+              "body": {
+                "id": "https://iiif.micr.io/AswjO/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 36837,
+                "height": 47118,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/AswjO",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/KVIjP",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Geographer and The Astronomer"],
+        "nl": ["De geograaf en De astronoom"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": [
+              "Städel Museum, Frankfurt am Main",
+              "Musée du Louvre, Paris"
+            ],
+            "nl": [
+              "Städel Museum, Frankfurt am Main",
+              "Musée du Louvre, Parijs"
+            ]
+          }
+        }
+      ],
+      "width": 28224,
+      "height": 15867,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/KVIjP/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/KVIjP/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/KVIjP",
+              "body": {
+                "id": "https://iiif.micr.io/KVIjP/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 28224,
+                "height": 15867,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/KVIjP",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/jkyPO",
+      "type": "Canvas",
+      "label": {
+        "en": ["Woman with a Pearl Necklace"],
+        "nl": ["Vrouw met parelsnoer"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Staatliche Museen zu Berlin – Gemäldegalerie"],
+            "nl": ["Staatliche Museen zu Berlin – Gemäldegalerie"]
+          }
+        }
+      ],
+      "width": 8976,
+      "height": 10903,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/jkyPO/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/jkyPO/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/jkyPO",
+              "body": {
+                "id": "https://iiif.micr.io/jkyPO/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 8976,
+                "height": 10903,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/jkyPO",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/dhEBo",
+      "type": "Canvas",
+      "label": {
+        "en": ["Woman holding a balance"],
+        "nl": ["Vrouw met weegschaal"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["National Gallery of Art, Washington"],
+            "nl": ["National Gallery of Art, Washington"]
+          }
+        }
+      ],
+      "width": 17086,
+      "height": 19274,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/dhEBo/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/dhEBo/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/dhEBo",
+              "body": {
+                "id": "https://iiif.micr.io/dhEBo/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 17086,
+                "height": 19274,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/dhEBo",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/FXjSR",
+      "type": "Canvas",
+      "label": {
+        "en": ["Young Woman with a Water Pitcher"],
+        "nl": ["Jonge vrouw met een waterkan"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Metropolitan Museum of Art, New York"],
+            "nl": ["The Metropolitan Museum of Art, New York"]
+          }
+        }
+      ],
+      "width": 5583,
+      "height": 6307,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/FXjSR/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/FXjSR/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/FXjSR",
+              "body": {
+                "id": "https://iiif.micr.io/FXjSR/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5583,
+                "height": 6307,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/FXjSR",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/eXEMl",
+      "type": "Canvas",
+      "label": {
+        "en": ["Allegory of the Catholic Faith"],
+        "nl": ["Allegorie van het Katholieke geloof"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The Metropolitan Museum of Art, New York"],
+            "nl": ["The Metropolitan Museum of Art, New York"]
+          }
+        }
+      ],
+      "width": 5514,
+      "height": 7124,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/eXEMl/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/eXEMl/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/eXEMl",
+              "body": {
+                "id": "https://iiif.micr.io/eXEMl/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 5514,
+                "height": 7124,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/eXEMl",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/PzHcg",
+      "type": "Canvas",
+      "label": {
+        "en": ["Christ in the House of Martha and Mary"],
+        "nl": ["Christus in het huis van Maria en Martha"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["National Galleries of Scotland, Edinburgh"],
+            "nl": ["National Galleries of Scotland, Edinburgh"]
+          }
+        }
+      ],
+      "width": 6039,
+      "height": 6745,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/PzHcg/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/PzHcg/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/PzHcg",
+              "body": {
+                "id": "https://iiif.micr.io/PzHcg/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 6039,
+                "height": 6745,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/PzHcg",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/iJtlS",
+      "type": "Canvas",
+      "label": {
+        "en": ["Saint Praxedis"],
+        "nl": ["Sint Praxedis"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["The National Museum of Western Art, Tokyo"],
+            "nl": [
+              "Kufu Company Inc., in bruikleen bij The National Museum of Western Art, Tokyo"
+            ]
+          }
+        }
+      ],
+      "width": 3123,
+      "height": 3782,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/iJtlS/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/iJtlS/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/iJtlS",
+              "body": {
+                "id": "https://iiif.micr.io/iJtlS/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 3123,
+                "height": 3782,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/iJtlS",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/bwvmv",
+      "type": "Canvas",
+      "label": {
+        "en": ["Diana and her Nymphs"],
+        "nl": ["Diana en haar nimfen"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Mauritshuis, Den Haag"],
+            "nl": ["Mauritshuis, Den Haag"]
+          }
+        }
+      ],
+      "width": 209044,
+      "height": 192168,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/bwvmv/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/bwvmv/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/bwvmv",
+              "body": {
+                "id": "https://iiif.micr.io/bwvmv/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 209044,
+                "height": 192168,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/bwvmv",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/fyowS",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Procuress"],
+        "nl": ["De koppelaarster"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Gemäldegalerie Alte Meister, Dresden"],
+            "nl": ["Gemäldegalerie Alte Meister, Dresden"]
+          }
+        }
+      ],
+      "width": 10800,
+      "height": 11768,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/fyowS/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/fyowS/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/fyowS",
+              "body": {
+                "id": "https://iiif.micr.io/fyowS/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 10800,
+                "height": 11768,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/fyowS",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ylAca",
+      "type": "Canvas",
+      "label": {
+        "en": ["The Art of Painting"],
+        "nl": ["De schilderkunst"]
+      },
+      "metadata": [
+        {
+          "label": {
+            "en": ["Collection"],
+            "nl": ["Collectie"]
+          },
+          "value": {
+            "en": ["Kunsthistorisches Museum, Gemäldegalerie, Vienna"],
+            "nl": ["Kunsthistorisches Museum, Gemäldegalerie, Wenen"]
+          }
+        }
+      ],
+      "width": 6155,
+      "height": 7342,
+      "items": [
+        {
+          "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ylAca/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ylAca/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://pages.allmaps.org/iiif-pyramid/manifests/vermeer/canvas/ylAca",
+              "body": {
+                "id": "https://iiif.micr.io/ylAca/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 6155,
+                "height": 7342,
+                "service": [
+                  {
+                    "id": "https://iiif.micr.io/ylAca",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

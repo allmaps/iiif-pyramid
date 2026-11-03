@@ -68,6 +68,9 @@ With a manifest, the first round uses the selected canvas. Advancing or
 skipping draws a different canvas at random, visiting each once before
 repeating. Scores carry over and the clock waits for the new canvas and tile.
 Choosing a canvas manually or opening another resource starts a new game.
+The **Closer to Johannes Vermeer** example includes all 37 paintings in the
+[Rijksmuseum exhibition](https://www.rijksmuseum.nl/nl/johannes-vermeer).
+The exhibition pairs *The Geographer* and *The Astronomer* on one canvas.
 A final score dialog shows each round and
 offers Play again; View score reopens it after dismissal.
 

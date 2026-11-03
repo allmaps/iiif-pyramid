@@ -1,5 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import { serialiseContentState } from '@iiif/helpers/content-state'
 import type { ContentState } from '@iiif/helpers/content-state'
 import {
@@ -39,6 +40,42 @@ test('Allmaps reads tiled image canvases from Presentation 2 and 3', () => {
     assert.equal(parsed.canvases[1].imageUrl, service)
     assert.equal(parsed.canvases[1].label, 'Page 2')
   }
+})
+
+test('the bundled Vermeer manifest opens from a subdirectory and keeps that address in game links', async (t) => {
+  const raw = JSON.parse(
+    readFileSync(
+      new URL('../static/manifests/vermeer.json', import.meta.url),
+      'utf8'
+    )
+  )
+  const { canvases, skipped } = parseManifest(raw)
+  assert.equal(canvases.length, 36)
+  assert.equal(skipped, 0)
+  assert.equal(
+    new Set(canvases.map((canvas) => canvas.id)).size,
+    canvases.length
+  )
+  const local = 'https://example.org/pyramid/manifests/vermeer.json'
+  const canvas = canvases.find(
+    (canvas) => canvas.label === 'The Geographer and The Astronomer'
+  )!
+  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => {
+    if (String(input) === local) return Response.json(raw)
+    assert.equal(String(input), canvas.imageUrl + '/info.json')
+    return Response.json({
+      ...info,
+      id: canvas.imageUrl,
+      width: canvas.width,
+      height: canvas.height
+    })
+  })
+  const { source } = await loadIIIFSource(local, signal(), {
+    canvas: canvas.id
+  })
+  const link = sourceUrl('https://example.org/pyramid/game/', source)
+  assert.equal(link.searchParams.get('iiif-content'), local)
+  assert.equal(link.searchParams.get('canvas'), canvas.id)
 })
 
 test('manifest, encoded URI, raw/encoded/referenced Content State resolve canvas and scaled spatial region', async (t) => {

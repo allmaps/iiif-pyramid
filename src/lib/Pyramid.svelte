@@ -68,6 +68,14 @@
     embed?: EmbedOptions
   } = $props()
   const pyramidOnly = $derived(embed?.layout === 'pyramid-only')
+  const sourceExamples = [
+    ...examples,
+    {
+      title: 'Closer to Johannes Vermeer',
+      collection: 'Rijksmuseum · 37 paintings',
+      url: `${base}/manifests/vermeer.json`
+    }
+  ]
 
   let source = $state<ImageSource>()
   let manifest = $state.raw<ManifestSource>()
@@ -1104,11 +1112,11 @@
   </form>
   <div class="examples-heading">Or start exploring</div>
   <div class="examples">
-    {#each examples as example, i}
+    {#each sourceExamples as example, i}
       <button
         onclick={() => {
-          input = example.url
-          void open(example.url)
+          input = new URL(example.url, location.href).href
+          void open(input)
         }}
         disabled={loading}
         ><span class="example-number">0{i + 1}</span><span
