@@ -595,6 +595,7 @@ select:focus-visible {
 .position-marker:disabled {
   opacity: 1;
   cursor: default;
+  pointer-events: none;
 }
 .position-marker:not(.dragging):not(.flying):hover .figure-person {
   transform: translateY(-2px);

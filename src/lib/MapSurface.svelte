@@ -731,6 +731,14 @@
     return [event.clientX - box.left, event.clientY - box.top]
   }
 
+  function scrollOverFigure(event: WheelEvent) {
+    if (!map?.scrollZoom.isEnabled()) return
+    // The figure sits above the canvas. Let MapLibre handle the same wheel
+    // delta, modifiers and pointer position it would receive on the map.
+    const wheel = new WheelEvent('wheel', event)
+    if (!map.getCanvas().dispatchEvent(wheel)) event.preventDefault()
+  }
+
   function startFigureDrag(
     event: PointerEvent & { currentTarget: EventTarget & HTMLButtonElement },
     fromControl = false
@@ -1947,6 +1955,7 @@
         aria-label={`${figurePlacement ? 'Guess' : 'Image position'} at 1:${positionFactor}. Drag to ${figurePlacement ? 'place your guess' : 'explore'}`}
         aria-describedby="position-figure-help"
         title={`${figurePlacement ? 'Your guess' : 'Image position'} · 1:${positionFactor} — drag to place, click to center`}
+        onwheel={scrollOverFigure}
         onpointerdown={(event) => startFigureDrag(event)}
         onpointermove={moveFigureDrag}
         onpointerup={endFigureDrag}
