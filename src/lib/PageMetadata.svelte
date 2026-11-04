@@ -19,8 +19,10 @@
     ).replace(/\/+$/, '') + '/'
   const canonical = $derived(new URL(path, site).href)
   const image = $derived(
-    new URL(game ? 'social/tile-hunt.jpg?v=alpine' : 'social/pyramid.jpg', site)
-      .href
+    new URL(
+      game ? 'social/tile-hunt.jpg?v=alpine-2' : 'social/pyramid.jpg',
+      site
+    ).href
   )
   const alt = $derived(
     game
