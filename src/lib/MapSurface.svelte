@@ -13,7 +13,7 @@
   import { Minus, Plus, CornersOut, PersonArmsSpread } from 'phosphor-svelte'
   import { PlanarMapLayer } from './PlanarMapLayer'
   import FollowControl from './FollowControl.svelte'
-  import { tileCenter } from './tile-navigation'
+  import { tileAtPosition, tileCenter } from './tile-navigation'
   import PositionFigure from './PositionFigure.svelte'
   import type {
     FigureVariant,
@@ -180,8 +180,6 @@
   let figurePoint = $state<Point>()
   let figureFlight = $state.raw<FigureFlight>()
   let figureTravelling = $state(false)
-  let cameraMoving = $state(false)
-  let controllerMoving = $state(false)
 
   let figureHeld = $state.raw<Point>()
   let figureAction = 0
@@ -199,12 +197,9 @@
     target?: FigureTarget
   }
   let figureDrag = $state.raw<FigureDrag>()
+  let figureDropHighlight = $state<{ plane: string; tile?: string }>()
   const figureAirborne = $derived(
-    !!figureDrag ||
-      !!figureFlight ||
-      figureTravelling ||
-      cameraMoving ||
-      controllerMoving
+    !!figureDrag?.moved || !!figureFlight || figureTravelling
   )
   const draggingFigure = $derived(!!figureDrag?.moved)
   const positionOnscreen = $derived(
@@ -387,20 +382,27 @@
       updateFigure()
       return
     }
-    const origin = map.unproject(
-      figurePoint && positionVisible(figurePoint, size.width, size.height)
-        ? figurePoint
-        : [size.width / 2, size.height / 2]
-    )
+    const origin = figurePoint ? map.unproject(figurePoint) : undefined
+    const target = position && map.project(position.world)
+    // Reframing a stationary figure is only camera movement. Keep its feet on
+    // the same tile, including when the figure starts outside the viewport.
+    const movingFigure =
+      target &&
+      figurePoint &&
+      Math.hypot(
+        figurePoint[0] - target.x,
+        figurePoint[1] - target.y
+      ) > 0.35
     void figureMotion.set(figureMotion.current, { instant: true })
-    figureFlight = position
-      ? {
-          from: [origin.lng, origin.lat],
-          to: position.world,
-          cameraFrom,
-          cameraTo
-        }
-      : undefined
+    figureFlight =
+      movingFigure && origin && position
+        ? {
+            from: [origin.lng, origin.lat],
+            to: position.world,
+            cameraFrom,
+            cameraTo
+          }
+        : undefined
     followingFlight = true
     // MapLibre owns the easing and duration. Project from its actual camera
     // every move event, so zoom-out and pan carry the figure together.
@@ -612,6 +614,7 @@
             : [],
         selection:
           selected &&
+          !(figurePlacement && draggingFigure) &&
           selected.level.scaleFactor === activeFactor &&
           selected.level.scaleFactor === level.scaleFactor
             ? tilePolygon(item, selected)
@@ -663,6 +666,7 @@
       const point = map.project(world)
       position = { world, screen: [point.x, point.y] }
     } else position = undefined
+    projectFigureDrop()
     updateFigure()
     updateHover()
     projectHover()
@@ -790,11 +794,6 @@
         point[0] - figureDrag.start[0],
         point[1] - figureDrag.start[1]
       ) > 4
-    const inside =
-      point[0] >= 0 &&
-      point[1] >= 0 &&
-      point[0] <= size.width &&
-      point[1] <= size.height
     figureDrag = {
       ...figureDrag,
       anchor,
@@ -802,18 +801,51 @@
       tilt: Math.max(
         -12,
         Math.min(12, (anchor[0] - figureDrag.anchor[0]) * 0.7)
-      ),
-      target:
-        moved && inside
-          ? figureDropTarget(
-              scene.layers,
-              (item) => resource(item, anchor),
-              source.image.width,
-              source.image.height
-            )
-          : undefined
+      )
     }
+    projectFigureDrop()
     projectFigure()
+  }
+
+  function projectFigureDrop() {
+    const drag = figureDrag
+    if (!drag?.moved || !scene || !map || sceneSource !== source) {
+      figureDropHighlight = undefined
+      return
+    }
+    const point = drag.anchor.map((value, i) => value - drag.offset[i])
+    const inside =
+      point[0] >= 0 &&
+      point[1] >= 0 &&
+      point[0] <= size.width &&
+      point[1] <= size.height
+    // Re-hit-test the fixed screen anchor as the camera zooms beneath it.
+    // The preview and release use the same point and edge-tile clamping.
+    const target = inside
+      ? figureDropTarget(
+          scene.layers,
+          (item) => resource(item, drag.anchor),
+          source.image.width,
+          source.image.height
+        )
+      : undefined
+    figureDrag = { ...drag, target }
+    figureDropHighlight = target
+      ? {
+          plane: polygon(target.item, [
+            0,
+            0,
+            source.image.width,
+            source.image.height
+          ]),
+          tile: figurePlacement
+            ? tilePolygon(
+                target.item,
+                tileAtPosition(source, target.item.level, target.point)
+              )
+            : undefined
+        }
+      : undefined
   }
 
   function releaseFigurePointer() {
@@ -824,6 +856,7 @@
       figureInitialized = true
     }
     figureDrag = undefined
+    figureDropHighlight = undefined
     if (drag?.element.hasPointerCapture(drag.pointerId))
       drag.element.releasePointerCapture(drag.pointerId)
     return drag
@@ -1092,8 +1125,7 @@
 
   /** Analog input already supplies animation frames; avoid queuing camera flights. */
   export function driveCamera(pan: Point, zoom: number) {
-    controllerMoving = !!(pan[0] || pan[1] || zoom)
-    if (!controllerMoving || !map || !scene) return
+    if (!(pan[0] || pan[1] || zoom) || !map || !scene) return
     const item = scene.layers.find(
       (item) => item.level.scaleFactor === activeFactor
     )
@@ -1642,7 +1674,10 @@
       ready = true
     })
     map.on('render', refresh)
-    map.on('move', projectFigure)
+    map.on('move', () => {
+      projectFigureDrop()
+      projectFigure()
+    })
     map.on('resize', () => {
       // MapLibre already observes its container and redraws synchronously after
       // resizing the canvas. A second observer clears that freshly drawn frame.
@@ -1663,7 +1698,6 @@
       }, 150)
     })
     map.on('moveend', () => {
-      cameraMoving = false
       if (interruptingNavigation) {
         if (kind === 'image') onmoving?.(false)
         return
@@ -1677,7 +1711,6 @@
     })
     map.on('error', (event) => onerror(event.error.message))
     map.on('movestart', (event) => {
-      cameraMoving = true
       publishHover()
       if (kind === 'image') onmoving?.(true)
       const original = event.originalEvent
@@ -1913,16 +1946,12 @@
       />
     </g>
   {/if}
-  {#if figureDrag?.moved && figureDrag.target}
-    <polygon
-      class="figure-drop-plane"
-      points={polygon(figureDrag.target.item, [
-        0,
-        0,
-        source.image.width,
-        source.image.height
-      ])}
-    />
+  {#if figureDropHighlight}
+    <polygon class="figure-drop-plane" points={figureDropHighlight.plane} />
+    {#if figureDropHighlight.tile}<polygon
+        class="selected-tile figure-drop-tile"
+        points={figureDropHighlight.tile}
+      />{/if}
   {/if}
 </svg>
 {#if kind === 'pyramid'}
