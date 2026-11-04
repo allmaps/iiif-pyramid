@@ -1836,6 +1836,9 @@
       ><path d="M0 0L10 5L0 10Z" fill="#087349" /></marker
     >
     {#each drawings as drawing, i (drawing.id)}
+      <clipPath id={`${maskPrefix}-${drawing.id}-plane`}>
+        <polygon points={drawing.polygon} />
+      </clipPath>
       <mask
         id={`${maskPrefix}-${drawing.id}`}
         maskUnits="userSpaceOnUse"
@@ -1844,7 +1847,8 @@
         width={size.width}
         height={size.height}
       >
-        <polygon points={drawing.polygon} fill="white" />
+        <!-- Occlude behind higher planes without clipping edge-tile strokes. -->
+        <rect width={size.width} height={size.height} fill="white" />
         {#each drawings.slice(i + 1) as above}
           <polygon
             points={above.polygon}
@@ -1892,20 +1896,22 @@
           class="answer-tile"
         />{/if}
       {#if showPositionFigure && figurePoint && !figureAirborne && drawing.level.scaleFactor === positionFactor}
-        <g
-          class="placed-figure-shadow"
-          transform={`translate(${figurePoint[0]} ${figurePoint[1]})`}
+        <g clip-path={`url(#${maskPrefix}-${drawing.id}-plane)`}
+          ><g
+            class="placed-figure-shadow"
+            transform={`translate(${figurePoint[0]} ${figurePoint[1]})`}
+          >
+            <ellipse
+              cx="5"
+              cy="1"
+              rx="18"
+              ry="6"
+              fill="#20372866"
+              filter={`url(#${maskPrefix}-figure-shadow)`}
+            />
+            <ellipse rx="7" ry="2.5" fill="#10251b55" />
+          </g></g
         >
-          <ellipse
-            cx="5"
-            cy="1"
-            rx="18"
-            ry="6"
-            fill="#20372866"
-            filter={`url(#${maskPrefix}-figure-shadow)`}
-          />
-          <ellipse rx="7" ry="2.5" fill="#10251b55" />
-        </g>
       {/if}
     </g>
     <polygon

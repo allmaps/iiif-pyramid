@@ -265,6 +265,9 @@ function drawOverlays(
         ctx.lineWidth = 0.75 * d
         ctx.stroke(grid)
       }
+      ctx.restore()
+      // Tile outlines straddle their edges. Only higher planes should hide
+      // them, so release the image clip before drawing the highlights.
       const current = level.scaleFactor === snapshot.activeFactor
       if (snapshot.grid && current) {
         ctx.strokeStyle = '#ff56ba'
@@ -290,7 +293,6 @@ function drawOverlays(
         ctx.lineWidth = 2.5 * d
         ctx.stroke(p)
       }
-      ctx.restore()
       // Match the live SVG masks: upper images hide lower-plane overlays.
       ctx.globalCompositeOperation = 'destination-out'
       ctx.fillStyle = '#000'
