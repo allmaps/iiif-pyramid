@@ -69,6 +69,11 @@ export const examples = [
     url: 'https://amsterdamtimemachine.github.io/berckenrode-iiif/KZL_W_X_020'
   },
   {
+    title: 'Urbano Monte’s world map · 1587',
+    collection: 'David Rumsey Historical Map Collection',
+    url: 'https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~303661~90074314'
+  },
+  {
     title: 'Railway bridge Hollands Diep',
     collection: 'TU Delft',
     url: 'https://dlc.services/iiif-img/7/18/8e152582-1053-43db-8530-1e767e583b1f'
