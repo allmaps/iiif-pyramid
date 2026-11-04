@@ -13,6 +13,7 @@
 
   let {
     dragging = false,
+    celebrating = false,
     invalid = false,
     tilt = 0,
     shadow = true,
@@ -21,18 +22,20 @@
     palette = 'iiif'
   }: FigureOptions & {
     dragging?: boolean
+    celebrating?: boolean
     invalid?: boolean
     tilt?: number
     shadow?: boolean
     outfit?: HunterOutfit
   } = $props()
+  const raised = $derived(dragging || celebrating)
   const extension = new Tween(
-    untrack(() => (dragging ? 1 : 0)),
+    untrack(() => (raised ? 1 : 0)),
     { easing: cubicOut }
   )
   $effect(() => {
-    void extension.set(dragging ? 1 : 0, {
-      duration: prefersReducedMotion.current ? 0 : dragging ? 220 : 300
+    void extension.set(raised ? 1 : 0, {
+      duration: prefersReducedMotion.current ? 0 : raised ? 220 : 300
     })
   })
   const colors = $derived(figurePalettes[palette])
@@ -54,6 +57,7 @@
   fill="none"
   aria-hidden="true"
   class:dragging
+  class:celebrating={celebrating && !dragging}
   data-variant={variant}
   data-palette={palette}
 >
@@ -79,12 +83,12 @@
   >
     {#if variant === 'original'}
       <path
-        d={dragging ? figureDraggingLimbs : figureLimbs}
+        d={raised ? figureDraggingLimbs : figureLimbs}
         stroke="white"
         stroke-width="8"
       />
       <path
-        d={dragging ? figureDraggingLimbs : figureLimbs}
+        d={raised ? figureDraggingLimbs : figureLimbs}
         stroke={limbsColor}
         stroke-width="5"
       />
@@ -132,9 +136,29 @@
   .dragging .figure-person {
     transform: translateY(-5px) rotate(var(--figure-tilt));
   }
+  .celebrating .figure-person {
+    animation: celebration-dance 500ms ease-in-out 3;
+  }
+  @keyframes celebration-dance {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0);
+    }
+    20% {
+      transform: translate(-3px, -5px) rotate(-9deg);
+    }
+    45% {
+      transform: translate(0, -9px) rotate(0);
+    }
+    70% {
+      transform: translate(3px, -5px) rotate(9deg);
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .figure-person {
+    .figure-person,
+    .celebrating .figure-person {
       transition: none;
+      animation: none;
     }
   }
 </style>

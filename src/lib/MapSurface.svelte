@@ -180,6 +180,7 @@
   let figurePoint = $state<Point>()
   let figureFlight = $state.raw<FigureFlight>()
   let figureTravelling = $state(false)
+  let figureCelebration = $state.raw<AbortSignal>()
 
   let figureHeld = $state.raw<Point>()
   let figureAction = 0
@@ -1100,14 +1101,27 @@
         disposed ||
         !figurePlacement ||
         !figurePoint ||
-        !positionOnscreen
+        !positionOnscreen ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
       )
         return
-      await celebrateIIIF(
-        container.parentElement!,
-        [figurePoint[0], figurePoint[1] - 28],
-        signal
-      )
+      figureCelebration = signal
+      const stopDancing = () => {
+        if (figureCelebration === signal) figureCelebration = undefined
+      }
+      const danceTimer = setTimeout(stopDancing, 1500)
+      signal.addEventListener('abort', stopDancing, { once: true })
+      try {
+        await celebrateIIIF(
+          container.parentElement!,
+          [figurePoint[0], figurePoint[1] - 28],
+          signal
+        )
+      } finally {
+        clearTimeout(danceTimer)
+        signal.removeEventListener('abort', stopDancing)
+        stopDancing()
+      }
     } catch (cause) {
       // A decorative effect must never prevent scoring or advancing the game.
       console.warn('Could not display IIIF confetti', cause)
@@ -2008,6 +2022,7 @@
           variant={figureVariant}
           palette={figurePalette}
           dragging={figureAirborne}
+          celebrating={!!figureCelebration}
           invalid={!!figureDrag?.moved && !figureDrag.target}
           tilt={figureDrag?.tilt ?? 0}
         />
