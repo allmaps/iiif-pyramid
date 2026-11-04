@@ -33,6 +33,8 @@
 
 <svelte:head>
   <title>{title}</title>
+  <meta name="theme-color" content={game ? '#202723' : '#e0f2e8'} />
+  <meta name="color-scheme" content={game ? 'dark' : 'light'} />
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {#if noindex}<meta name="robots" content="noindex" />{/if}
